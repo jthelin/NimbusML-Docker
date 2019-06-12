@@ -14,7 +14,7 @@ FROM nvidia/cuda:10.1-cudnn7-devel
 RUN apt-get update --quiet \
  && apt-get install --yes --no-install-recommends --quiet \
         curl \
-        libcurl3 \
+        libcurl4 \
         vim-tiny \
         python3 \
         python3-pip \
