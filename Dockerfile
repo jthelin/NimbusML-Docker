@@ -1,14 +1,13 @@
 ## Build with command [from repo root directory]:
-# docker build --tag jthelin/nimbusml . --file ./Docker/NimbusML.Dockerfile
+# docker build --tag jthelin/nimbusml . --file ./Dockerfile
 ##
 ## Run with command:
-# docker run --rm -it -v type=bind,source=$(pwd)/out,target=/datadrive jthelin/nimbusml bash
+# docker run --rm -it jthelin/nimbusml bash
 ##
 
 # Based on:
 # https://docs.microsoft.com/en-us/nimbusml/installationguide
 
-## FROM ubuntu:16.04
 FROM nvidia/cuda:9.0-cudnn7-devel
 
 # Install extra package dependencies.
@@ -17,8 +16,6 @@ RUN apt-get update --quiet \
         curl \
         libcurl3 \
         vim-tiny \
-        liblttng-ust0 \
-        liburcu4 \
         python3 \
         python3-pip \
         python3-setuptools \
