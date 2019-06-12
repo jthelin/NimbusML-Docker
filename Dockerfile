@@ -8,13 +8,13 @@
 # Based on:
 # https://docs.microsoft.com/en-us/nimbusml/installationguide
 
-FROM nvidia/cuda:9.0-cudnn7-devel
+FROM nvidia/cuda:10.1-cudnn7-devel
 
 # Install extra package dependencies.
 RUN apt-get update --quiet \
  && apt-get install --yes --no-install-recommends --quiet \
         curl \
-        libcurl3 \
+        libcurl4 \
         vim-tiny \
         python3 \
         python3-pip \
