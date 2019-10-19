@@ -25,7 +25,7 @@ RUN apt-get update --quiet \
 RUN ln -s /usr/bin/python3 /usr/local/bin/python \
  && ln -s /usr/bin/pip3 /usr/local/bin/pip
 
-RUN which python && which pip && python --version
+RUN command -v python && command -v pip && python --version
 RUN pip install --no-cache-dir --upgrade pip setuptools
 
 # Install extra python package dependencies.
@@ -40,4 +40,5 @@ VOLUME /datadrive
 WORKDIR /home/app/src
 
 # Run a simple smoke test to config our setup works ok
-CMD python -m nimbusml.examples.FastLinearClassifier
+CMD [ "python", "-m", "nimbusml.examples.FastLinearClassifier" ]
+
