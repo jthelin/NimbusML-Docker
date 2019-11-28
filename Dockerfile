@@ -8,7 +8,7 @@
 # Based on:
 # https://docs.microsoft.com/en-us/nimbusml/installationguide
 
-FROM nvidia/cuda:10.1-cudnn7-devel
+FROM nvidia/cuda:10.2-cudnn7-devel
 
 # Install extra package dependencies.
 RUN apt-get update --quiet \
