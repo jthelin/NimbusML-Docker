@@ -10,6 +10,8 @@
 
 FROM nvidia/cuda:10.2-cudnn7-devel
 
+ENV NIMBUSML_VERSION=1.8.0
+
 # Install extra package dependencies.
 RUN apt-get update --quiet \
  && apt-get install --yes --no-install-recommends --quiet \
@@ -43,7 +45,7 @@ RUN pip install --no-cache-dir \
        six
 
 # Install NimbusML python package.
-RUN pip install --no-cache-dir nimbusml==1.8.0
+RUN pip install --no-cache-dir nimbusml==${NIMBUSML_VERSION}
 
 # Set the working directory
 RUN mkdir -p /datadrive && mkdir -p /home/app/src
