@@ -1,8 +1,8 @@
 ## Build with command [from repo root directory]:
-# docker build --tag jthelin/nimbusml . --file ./Dockerfile
+# docker build --tag nimbusml . --file ./Dockerfile
 ##
 ## Run with command:
-# docker run --rm -it jthelin/nimbusml bash
+# docker run --rm -it nimbusml bash
 ##
 
 # Based on:
@@ -25,14 +25,25 @@ RUN apt-get update --quiet \
 RUN ln -s /usr/bin/python3 /usr/local/bin/python \
  && ln -s /usr/bin/pip3 /usr/local/bin/pip
 
+# Show installed versions of python and pip
 RUN command -v python && command -v pip && python --version
+
 RUN pip install --no-cache-dir --upgrade pip setuptools
 
-# Install extra python package dependencies.
-RUN pip install distro dotnetcore2 numpy pandas pytz python-dateutil scikit-learn scipy six
+# Pre-install extra python package dependencies (to allow docker layer reuse).
+RUN pip install --no-cache-dir \
+       distro \
+       dotnetcore2 \
+       numpy \
+       pandas \
+       pytz \
+       python-dateutil \
+       scikit-learn \
+       scipy \
+       six
 
-# Install MimbusML python package.
-RUN pip install nimbusml
+# Install NimbusML python package.
+RUN pip install --no-cache-dir nimbusml==1.8.0
 
 # Set the working directory
 RUN mkdir -p /datadrive && mkdir -p /home/app/src
